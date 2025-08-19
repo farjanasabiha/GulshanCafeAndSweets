@@ -26,7 +26,7 @@ const LatestNews = () => {
       image: '/bg-side-3.jpg',
       date: 'July 05, 2020',
       title: 'Fresh Ingredients Matter',
-      excerpt: 'Lorem Ipsum is simply dummy text of the printing and typese...',
+      excerpt: 'Lorem Ipsum is simply dummy text the printing and typese...',
       author: 'Chef Martinez',
       readTime: '3 min read',
       category: 'Ingredients',

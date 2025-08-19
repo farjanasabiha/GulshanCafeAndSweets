@@ -80,7 +80,6 @@ const HomeHeader = () => {
             }`}
             style={{ transitionDelay: "800ms" }}
           >
-            {/* Book Now Button - Outline Style */}
             <button
               className="group relative px-10 py-4 border-2 border-white text-white font-semibold text-lg tracking-wide rounded-full hover:bg-white hover:text-black transition-all duration-500 transform hover:scale-105 overflow-hidden animate-slide-up"
               style={{ animationDelay: "1s" }}
