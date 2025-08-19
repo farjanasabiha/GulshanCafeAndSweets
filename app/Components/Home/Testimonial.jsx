@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 // Mock Next.js Image component since we can't import it directly
@@ -163,9 +164,7 @@ const Testimonial = () => {
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
         {/* Title */}
         <div className="text-center mb-12 md:mb-16 animate-fade-up">
-
-
-                    <div className="inline-block">
+          <div className="inline-block">
             <h3 className="text-red-500 font-script text-xl mb-4 transform hover:scale-105 transition-transform duration-300">
               Food Item
             </h3>
