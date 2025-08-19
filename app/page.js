@@ -16,7 +16,6 @@ export default function Home() {
         <RestaurantMenu />
         <OurGallery/>
         <LatestNews />
-        {/* <OurChefSection /> */}
         <Testimonial />
         <Footer />
       </main>
