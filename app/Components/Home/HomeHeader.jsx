@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from "react";
 
 const HomeHeader = () => {
@@ -49,8 +50,8 @@ const HomeHeader = () => {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white tracking-[0.3em] leading-tight">
-              ENJOY YOUR DINNER
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase font-light text-white tracking-[0.3em] leading-tight">
+              gulshan Cafe and Sweets
             </h1>
           </div>
 

@@ -1,10 +1,11 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Calendar, User, Eye } from 'lucide-react';
-
+import Image from "next/image";
 const LatestNews = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
-
+  const [floatingVeggies, setFloatingVeggies] = useState([]);
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -45,8 +46,48 @@ const LatestNews = () => {
     }
   ];
 
+    const vegetables = [
+      { image: "/14.png" },
+      { image: "/41.png" },
+  ];
+  
+    useEffect(() => {
+      // Create only 3 fixed veggies
+      const positions = [
+        { x: 2, y: 20 }, // left side
+        { x: 90, y: 50 }, // right side
+      ];
+  
+      const initialVeggies = vegetables.map((veg, i) => ({
+        id: i,
+        veggie: veg.image,
+        x: positions[i].x,
+        y: positions[i].y,
+        rotation: Math.random() * 360,
+        scale: 0.8 + Math.random() * 0.4,
+        animationDuration: 3 + Math.random() * 4,
+      }));
+  
+      setFloatingVeggies(initialVeggies);
+    }, []);
+
   return (
     <div className="bg-gradient-to-br from-gray-50 to-white py-20 px-4 overflow-hidden relative">
+      {/* Floating Vegetables */}
+      {floatingVeggies.map((veggie) => (
+        <div
+          key={veggie.id}
+          className="absolute pointer-events-none opacity-80"
+          style={{
+            left: `${veggie.x}%`,
+            top: `${veggie.y}%`,
+            transform: `rotate(${veggie.rotation}deg) scale(${veggie.scale})`,
+            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
+          }}
+        >
+          <Image src={veggie.veggie} alt="vegetable" height={120} width={150} />
+        </div>
+      ))}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div
@@ -150,44 +191,28 @@ const LatestNews = () => {
             </div>
           ))}
         </div>
-
-        {/* Floating Decorations */}
-        <div className="absolute top-20 right-10 w-20 h-20 bg-red-100 rounded-full opacity-30 animate-float"></div>
-        <div className="absolute bottom-20 left-10 w-16 h-16 bg-orange-100 rounded-full opacity-40 animate-float delay-1000"></div>
-        <div className="absolute top-1/2 right-20 w-12 h-12 bg-yellow-100 rounded-full opacity-50 animate-float delay-2000"></div>
       </div>
-
-      {/* Extra Styles */}
       <style jsx>{`
         @keyframes float {
-          0%,
+          0% {
+            transform: translateY(0px) rotate(0deg);
+          }
           100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
+            transform: translateY(-20px) rotate(10deg);
           }
         }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-        .delay-2000 {
-          animation-delay: 2s;
-        }
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .line-clamp-3 {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
         }
       `}</style>
     </div>

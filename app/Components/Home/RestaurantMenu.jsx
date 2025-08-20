@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import {
   ChefHat,
@@ -7,10 +8,42 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
-
+import Image from "next/image";
 const RestaurantMenu = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isVisible, setIsVisible] = useState(false);
+
+  // Floating Start
+    const [floatingVeggies, setFloatingVeggies] = useState([]);
+  
+  const vegetables = [
+    { image: "/34.png" },
+    { image: "/15.png" },
+    { image: "/25.png" },
+  ];
+  
+    useEffect(() => {
+      // Create only 3 fixed veggies
+      const positions = [
+
+        { x: 6, y: 80 }, // left side
+        { x: 2, y: 20 }, // left side
+        { x: 90, y: 80 }, // right side
+      ];
+  
+      const initialVeggies = vegetables.map((veg, i) => ({
+        id: i,
+        veggie: veg.image,
+        x: positions[i].x,
+        y: positions[i].y,
+        rotation: Math.random() * 360,
+        scale: 0.8 + Math.random() * 0.4,
+        animationDuration: 3 + Math.random() * 4,
+      }));
+  
+      setFloatingVeggies(initialVeggies);
+    }, []);
+      // Floating End
 
   useEffect(() => {
     setIsVisible(true);
@@ -202,7 +235,25 @@ const RestaurantMenu = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 py-16 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 py-16 px-4  overflow-hidden relative">
+      {/* Floating Vegetables */}
+      {floatingVeggies.map((veggie) => (
+        <div
+          key={veggie.id}
+          className="absolute pointer-events-none opacity-80"
+          style={{
+            left: `${veggie.x}%`,
+            top: `${veggie.y}%`,
+            transform: `rotate(${veggie.rotation}deg) scale(${veggie.scale})`,
+            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
+          }}
+        >
+          <Image src={veggie.veggie} alt="vegetable" height={120} width={150} />
+        </div>
+      ))}
+      <div className="absolute top-28 right-0">
+        <Image src="/37.png" alt="vegetable" height={200} width={200} />
+      </div>
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div
@@ -234,7 +285,7 @@ const RestaurantMenu = () => {
             return (
               <div
                 key={category.id}
-                className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden ${
+                className={`bg-white rounded-2xl group shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden ${
                   isVisible
                     ? "translate-y-0 opacity-100"
                     : "translate-y-10 opacity-0"
@@ -242,17 +293,17 @@ const RestaurantMenu = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {/* Category Header */}
-                <div className="bg-red-700/60 p-6 text-center">
+                <div className="bg-[#ffe8d0] group-hover:bg-[#d14747] transition duration-300 p-6 text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 shadow-lg transform hover:rotate-12 transition-transform duration-300">
                     <IconComponent className={`w-8 h-8 ${category.color}`} />
                   </div>
-                  <h3 className="text-white font-bold text-xl tracking-wider">
+                  <h3 className="text-red-500 group-hover:text-white font-bold text-xl tracking-wider">
                     — {category.name} —
                   </h3>
                 </div>
 
                 {/* Menu Items */}
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-1">
                   {categoryItems.map((item, itemIndex) => (
                     <div
                       key={itemIndex}
@@ -292,18 +343,30 @@ const RestaurantMenu = () => {
             </div>
           </button>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-red-100 rounded-full opacity-50 animate-pulse"></div>
-        <div
-          className="absolute bottom-20 right-10 w-32 h-32 bg-orange-100 rounded-full opacity-30 animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-5 w-16 h-16 bg-yellow-100 rounded-full opacity-40 animate-bounce"
-          style={{ animationDelay: "2s" }}
-        ></div>
       </div>
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          100% {
+            transform: translateY(-20px) rotate(10deg);
+          }
+        }
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

@@ -1,22 +1,34 @@
 "use client";
-import React from "react";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
 
-// Mock Next.js Image component since we can't import it directly
-const Image = ({ src, alt, width, height, className }) => (
-  <img
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    className={className}
-    style={{
-      width: width ? `${width}px` : "auto",
-      height: height ? `${height}px` : "auto",
-    }}
-  />
-);
+
 
 const Testimonial = () => {
+
+      const [floatingVeggies, setFloatingVeggies] = useState([]);
+    
+      const vegetables = [{ image: "/Leaf2.png" }, { image: "/34.png" }];
+    
+      useEffect(() => {
+        // Create only 3 fixed veggies
+        const positions = [
+          { x: 2, y: 20 }, // left side
+          { x: 90, y: 40 }, // right side
+        ];
+    
+        const initialVeggies = vegetables.map((veg, i) => ({
+          id: i,
+          veggie: veg.image,
+          x: positions[i].x,
+          y: positions[i].y,
+          rotation: Math.random() * 360,
+          scale: 0.8 + Math.random() * 0.4,
+          animationDuration: 3 + Math.random() * 4,
+        }));
+    
+        setFloatingVeggies(initialVeggies);
+      }, []);
   const testimonials = [
     {
       id: 1,
@@ -42,137 +54,35 @@ const Testimonial = () => {
     },
   ];
 
-  const foodItems = [
-    { src: "🍅", alt: "Tomato", size: "w-12 h-12 md:w-20 md:h-20" },
-    { src: "🍗", alt: "Chicken", size: "w-10 h-10 md:w-14 md:h-14" },
-    { src: "☕", alt: "Coffee", size: "w-6 h-6 md:w-8 md:h-8" },
-  ];
-
-  const FloatingFoodItem = ({ item, position, delay = 0, reverse = false }) => (
-    <div
-      className={`absolute ${position} hover:opacity-100 transition-opacity duration-300`}
-      style={{
-        animation: `${reverse ? "floatReverse" : "float"} ${
-          6 + delay
-        }s ease-in-out infinite`,
-        animationDelay: `${delay}s`,
-      }}
-    >
-      <div
-        className={`text-3xl ${item.size} flex items-center justify-center hover:scale-110 transition-transform duration-300`}
-        aria-label={item.alt}
-      >
-        {item.src}
-      </div>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 relative overflow-hidden">
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-20px) rotate(8deg);
-          }
-        }
-        @keyframes floatReverse {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(20px) rotate(-8deg);
-          }
-        }
-        @keyframes slideInLeft {
-          0% {
-            transform: translateX(-100px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        @keyframes slideInRight {
-          0% {
-            transform: translateX(100px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        @keyframes fadeInUp {
-          0% {
-            transform: translateY(30px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-        .animate-slide-left {
-          animation: slideInLeft 0.8s ease-out forwards;
-        }
-        .animate-slide-right {
-          animation: slideInRight 0.8s ease-out forwards;
-        }
-        .animate-fade-up {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-      `}</style>
-
-      {/* Floating Food Items */}
-      {foodItems.map((item, idx) => (
-        <FloatingFoodItem
-          key={idx}
-          item={item}
-          position={
-            [
-              "top-16 left-8 md:left-20",
-              "top-32 right-16 md:right-32",
-              "top-1/2 left-4 md:left-12",
-              "bottom-32 right-8 md:right-20",
-              "top-20 left-1/3",
-              "bottom-20 left-8 md:left-16",
-              "top-1/3 right-4 md:right-8",
-            ][idx]
-          }
-          delay={idx * 0.5}
-          reverse={idx % 2 === 1}
-        />
+    <div className=" bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 relative overflow-hidden">
+      {/* Floating Vegetables */}
+      {floatingVeggies.map((veggie) => (
+        <div
+          key={veggie.id}
+          className="absolute pointer-events-none opacity-80"
+          style={{
+            left: `${veggie.x}%`,
+            top: `${veggie.y}%`,
+            transform: `rotate(${veggie.rotation}deg) scale(${veggie.scale})`,
+            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
+          }}
+        >
+          <Image src={veggie.veggie} alt="vegetable" height={120} width={150} />
+        </div>
       ))}
-
-      {/* Green circular element */}
-      <div
-        className="absolute top-16 right-8 md:right-16 w-8 h-8 md:w-12 md:h-12 bg-green-600 rounded-full opacity-60"
-        style={{
-          animation: "float 7s ease-in-out infinite",
-          animationDelay: "1s",
-        }}
-      ></div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
         {/* Title */}
         <div className="text-center mb-12 md:mb-16 animate-fade-up">
-          <div className="inline-block">
-            <h3 className="text-red-500 font-script text-xl mb-4 transform hover:scale-105 transition-transform duration-300">
-              Food Item
-            </h3>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-8 relative">
-              Feedback
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-red-500 rounded-full"></div>
-            </h2>
-          </div>
+          <h3 className="text-red-500 font-script text-xl mb-4 transform hover:scale-105 transition-transform duration-300">
+            Food Item
+          </h3>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-8 relative">
+            Feedback
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-red-500 rounded-full"></div>
+          </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-1 text-lg leading-relaxed">
             Lorem ipsum is simply dummy text of the printing and typesetting
             industry.
@@ -189,7 +99,7 @@ const Testimonial = () => {
               }`}
               style={{ animationDelay: `${index * 0.3}s` }}
             >
-              {/* Background Gradient */}
+              {/* Hover Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               <div className="relative z-10">
@@ -255,18 +165,18 @@ const Testimonial = () => {
                 </p>
 
                 {/* Product Image */}
-                <div className="flex justify-end">
+                {/* <div className="flex justify-end">
                   <div className="relative transform group-hover:scale-105 transition-transform duration-300">
                     <Image
                       src={testimonial.productImage}
                       alt="Food Product"
                       width={80}
-                      height={100}
+                      height={60}
                       className="rounded-lg shadow-md"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Hover Effect Overlay */}
@@ -285,6 +195,29 @@ const Testimonial = () => {
           <div className="w-3 h-3 bg-gray-300 rounded-full hover:bg-green-400 transition-colors duration-300 cursor-pointer"></div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          100% {
+            transform: translateY(-20px) rotate(10deg);
+          }
+        }
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

@@ -30,9 +30,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center">
-              <a href="/" className="flex items-center">
                 <Image src="/logo.png" height={60} width={60} alt="Logo" />
-              </a>
             </div>
             
             <p className="text-gray-400 leading-relaxed -mt-8">
@@ -99,6 +97,7 @@ export default function Footer() {
             <div className="grid grid-cols-3 gap-2">
               {instagramPosts.map((post, index) => (
                   <Image 
+                  key={index}
                     src={post} 
                     width={100}
                     height={100}
