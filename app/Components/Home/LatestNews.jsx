@@ -13,37 +13,28 @@ const LatestNews = () => {
   const newsItems = [
     {
       id: 1,
-      image: '/chicken.jpg',
-      date: 'July 05, 2020',
-      title: 'The Art of Perfect Cooking',
-      excerpt: 'Lorem Ipsum is simply dummy text of the printing and typese...',
-      author: 'Chef Martinez',
-      readTime: '5 min read',
-      category: 'Cooking Tips',
-      theme: 'from-red-400 via-pink-400 to-red-500'
+      image: "/Chicken-Chow-Mein-1.jpg",
+      title: "Chicken Chow Mein",
+      excerpt: "Stir-fried noodles with tender chicken, crisp veggies, and savory flavors",
+      category: "Cooking Tips",
+      theme: "from-red-400 via-pink-400 to-red-500",
     },
     {
       id: 2,
-      image: '/bg-side-3.jpg',
-      date: 'July 05, 2020',
-      title: 'Fresh Ingredients Matter',
-      excerpt: 'Lorem Ipsum is simply dummy text the printing and typese...',
-      author: 'Chef Martinez',
-      readTime: '3 min read',
-      category: 'Ingredients',
-      theme: 'from-orange-400 via-yellow-400 to-orange-500'
+      image: "/Beef-Fried-Rice.jpg",
+      title: "Vegetable Fried Rice",
+      excerpt: "Flavorful fried rice tossed with fresh vegetables and aromatic spices.",
+      category: "Ingredients",
+      theme: "from-orange-400 via-yellow-400 to-orange-500",
     },
     {
       id: 3,
-      image: '/fish.jpg',
-      date: 'July 05, 2020',
-      title: 'Grilling Like a Professional',
-      excerpt: 'Lorem Ipsum is simply dummy text of the printing and typese...',
-      author: 'Chef Martinez',
-      readTime: '7 min read',
-      category: 'Techniques',
-      theme: 'from-gray-700 via-gray-800 to-black'
-    }
+      image: "/misty.webp",
+      title: "Special Misty",
+      excerpt: "Traditional Bengali sweet, rich in flavor and made with love.Perfect for celebrations after-meal treat.",
+      category: "Techniques",
+      theme: "from-gray-700 via-gray-800 to-black",
+    },
   ];
 
     const vegetables = [
@@ -96,10 +87,10 @@ const LatestNews = () => {
           }`}
         >
           <h3 className="text-red-500 font-script text-2xl mb-2 transform hover:scale-105 transition-transform duration-300">
-            Our News
+            Our Top Picks
           </h3>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 relative">
-            LATEST NEWS
+          <h2 className="text-4xl uppercase lg:text-5xl font-bold text-gray-800 mb-4 relative">
+            Popular dishes
             <div className="absolute mt-5 -bottom-2 left-0 w-32 h-1 bg-red-500 rounded-full transform origin-left hover:scale-x-110 transition-transform duration-500"></div>
           </h2>
         </div>
@@ -147,11 +138,6 @@ const LatestNews = () => {
 
               {/* Content */}
               <div className="p-6 relative">
-                <div className="flex items-center text-gray-500 text-sm mb-3 group-hover:text-red-500 transition-colors duration-300">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span>Posted {item.date}</span>
-                </div>
-
                 <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-red-600 transition-colors duration-300 line-clamp-2">
                   {item.title}
                 </h3>
@@ -160,29 +146,13 @@ const LatestNews = () => {
                   {item.excerpt}
                 </p>
 
-                {/* Meta */}
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-6">
-                  <span className="flex items-center">
-                    <User className="w-3 h-3 mr-1" />
-                    {item.author}
-                  </span>
-                  <span className="flex items-center">
-                    <Eye className="w-3 h-3 mr-1" />
-                    {item.readTime}
-                  </span>
-                </div>
-
                 {/* Button */}
                 <button
-                  className={`w-full py-3 px-6 font-semibold rounded-lg transition-all duration-500 transform flex items-center justify-center group-hover:scale-105 ${
-                    index === 0
-                      ? "bg-red-500 text-white hover:bg-red-600 shadow-lg hover:shadow-xl"
-                      : "border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
-                  }`}
+                  className={`w-full py-3 border-2 border-red-500 text-red-500 px-6 font-semibold rounded-lg transition-all duration-500 transform flex items-center justify-center group-hover:scale-105 group-hover:bg-red-500 group-hover:text-white`}
                 >
-                  <span className="mr-2">CONTINUE READING</span>
+                  <span className="mr-2">ORDER NOW</span>
                   <ArrowRight
-                    className={`w-4 h-4 transition-transform duration-300 ${
+                    className={`w-4 h-4 transition-transform font-semibold duration-300 ${
                       hoveredCard === item.id ? "translate-x-2" : ""
                     }`}
                   />

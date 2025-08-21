@@ -8,6 +8,8 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
+import { FaRegArrowAltCircleDown } from "react-icons/fa";
+
 import Image from "next/image";
 const RestaurantMenu = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -49,178 +51,122 @@ const RestaurantMenu = () => {
     setIsVisible(true);
   }, []);
 
-  const menuItems = {
-    soup: [
-      {
-        name: "Tomato Basil Soup",
-        description: "Fresh tomatoes with aromatic basil and cream",
-        price: "$5.60",
-      },
-      {
-        name: "Chicken Noodle Soup",
-        description: "Hearty chicken broth with tender noodles",
-        price: "$5.60",
-      },
-      {
-        name: "Mushroom Bisque",
-        description: "Rich and creamy mushroom soup",
-        price: "$5.60",
-      },
-      {
-        name: "Vegetable Soup",
-        description: "Seasonal vegetables in clear broth",
-        price: "$5.60",
-      },
-      {
-        name: "Seafood Chowder",
-        description: "Creamy chowder with fresh seafood",
-        price: "$5.60",
-      },
-    ],
-    drinks: [
-      {
-        name: "Fresh Orange Juice",
-        description: "Freshly squeezed orange juice",
-        price: "$5.60",
-      },
-      {
-        name: "Iced Coffee",
-        description: "Cold brew coffee with ice",
-        price: "$5.60",
-      },
-      {
-        name: "Lemonade",
-        description: "Fresh lemon juice with sparkling water",
-        price: "$5.60",
-      },
-      {
-        name: "Green Smoothie",
-        description: "Healthy blend of greens and fruits",
-        price: "$5.60",
-      },
-      {
-        name: "Artisan Tea",
-        description: "Premium tea selection",
-        price: "$5.60",
-      },
-    ],
-    pizza: [
-      {
-        name: "Margherita Pizza",
-        description: "Fresh mozzarella, tomato sauce, and basil",
-        price: "$5.60",
-      },
-      {
-        name: "Pepperoni Classic",
-        description: "Traditional pepperoni with cheese",
-        price: "$5.60",
-      },
-      {
-        name: "Vegetarian Special",
-        description: "Fresh vegetables and herbs",
-        price: "$5.60",
-      },
-      {
-        name: "Meat Lovers",
-        description: "Multiple meats with rich cheese",
-        price: "$5.60",
-      },
-      {
-        name: "BBQ Chicken",
-        description: "Grilled chicken with BBQ sauce",
-        price: "$5.60",
-      },
-    ],
-    dinner: [
-      {
-        name: "Grilled Salmon",
-        description: "Fresh Atlantic salmon with herbs",
-        price: "$5.60",
-      },
-      {
-        name: "Beef Tenderloin",
-        description: "Premium cut with seasonal vegetables",
-        price: "$5.60",
-      },
-      {
-        name: "Chicken Parmesan",
-        description: "Breaded chicken with marinara",
-        price: "$5.60",
-      },
-      {
-        name: "Pasta Primavera",
-        description: "Fresh pasta with garden vegetables",
-        price: "$5.60",
-      },
-      {
-        name: "Lamb Chops",
-        description: "Herb-crusted lamb with mint sauce",
-        price: "$5.60",
-      },
-    ],
-    lunch: [
-      {
-        name: "Caesar Salad",
-        description: "Crisp romaine with classic dressing",
-        price: "$5.60",
-      },
-      {
-        name: "Club Sandwich",
-        description: "Triple-decker with turkey and bacon",
-        price: "$5.60",
-      },
-      {
-        name: "Fish Tacos",
-        description: "Grilled fish with fresh salsa",
-        price: "$5.60",
-      },
-      {
-        name: "Quinoa Bowl",
-        description: "Healthy quinoa with mixed vegetables",
-        price: "$5.60",
-      },
-      {
-        name: "Burger Deluxe",
-        description: "Gourmet burger with premium toppings",
-        price: "$5.60",
-      },
-    ],
-    breakfast: [
-      {
-        name: "Pancakes Stack",
-        description: "Fluffy pancakes with maple syrup",
-        price: "$5.60",
-      },
-      {
-        name: "Eggs Benedict",
-        description: "Poached eggs on English muffin",
-        price: "$5.60",
-      },
-      {
-        name: "Avocado Toast",
-        description: "Fresh avocado on artisan bread",
-        price: "$5.60",
-      },
-      {
-        name: "French Toast",
-        description: "Thick-cut bread with cinnamon",
-        price: "$5.60",
-      },
-      {
-        name: "Breakfast Burrito",
-        description: "Eggs, cheese, and fresh salsa",
-        price: "$5.60",
-      },
-    ],
-  };
+const menuItems = {
+  vegetable: [
+    { name: "Mix Vegetable", price: "$6.00" },
+    { name: "Chana Daal", price: "$6.00" },
+    { name: "Aloo Bhaji", price: "$6.00" },
+    { name: "Shak Bhaji", price: "$6.00" },
+    { name: "Cabbage Bhaji", price: "$6.00" },
+    { name: "Daal", price: "$4.00" },
+    { name: "Begun Vaja (1p)", price: "$2.00" },
+    { name: "Aloo Bhorta", price: "$2.00" },
+    { name: "Shutki Bhorta", price: "$3.00" },
+    { name: "Maach Bhorta", price: "$3.00" },
+    { name: "Tomoto Bhorta", price: "$3.00" },
+    { name: "Begun Bhorta", price: "$3.00" },
+    { name: "Shrimp Bhorta", price: "$4.00" },
+    { name: "Dim Bhorta", price: "$3.00" },
+    { name: "Bins Bhorta", price: "$3.00" },
+  ],
+  "bread and rice": [
+    { name: "Naan Bread", price: "$2.00" },
+    { name: "Garlic Naan", price: "$3.00" },
+    { name: "Onion Khulsa", price: "$3.00" },
+    { name: "Khima Naan", price: "$5.00" },
+    { name: "Porota", price: "$2.00" },
+    { name: "Ruti", price: "$1.50" },
+    { name: "Chapathi Rooti", price: "$2.00" },
+    { name: "White Rice", price: "$2.00" },
+    { name: "Polao", price: "$3.00" },
+  ],
+  misty: [
+    { name: "Rosogullah", price: "$8.00" },
+    { name: "Balu Shahi", price: "$8.00" },
+    { name: "Kalo Jam", price: "$8.00" },
+    { name: "Golap Jam", price: "$8.00" },
+    { name: "Panthua", price: "$8.00" },
+    { name: "Kacha Gullah", price: "$9.00" },
+    { name: "Borbi Sondesh", price: "$9.00" },
+    { name: "Gurer Sondesh", price: "$9.00" },
+    { name: "Chom Chom", price: "$8.00" },
+    { name: "Jilapi", price: "$7.00" },
+    { name: "Nimki", price: "$8.00" },
+    { name: "Murali", price: "$6.00" },
+  ],
+  "dessert and drinks": [
+    { name: "Firni", price: "$3.00/$5.00" },
+    { name: "Rice Pudding", price: "$3.00" },
+    { name: "Egg Pudding 1pc", price: "$3.00" },
+    { name: "Custard", price: "$4.00" },
+    { name: "Faloa Daa", price: "$6.00" },
+    { name: "Milk Semai", price: "$4.00" },
+    { name: "Mango Lacci", price: "$5.00" },
+    { name: "Semai", price: "$3.00" },
+    { name: "Deshi Doi", price: "$5.00" },
+    { name: "Ros Moai", price: "$3.00" },
+    { name: "Burhani 1(gl)", price: "$2.00" },
+    { name: "Bottle Water", price: "$1.00" },
+    { name: "Soda Can", price: "$1.00" },
+    { name: "Tea", price: "$1.00" },
+  ],
+  // "halal chinese": [
+  //   { name: "Vegetable Fried Rice", price: "$10.00" },
+  //   { name: "Shrimp Fried Rice", price: "$10.00" },
+  //   { name: "Egg Fried Rice", price: "$10.00" },
+  //   { name: "Chilli Chicken", price: "$12.00" },
+  //   { name: "Sesame Chicken", price: "$12.00" },
+  //   { name: "Chicken Chow Mein", price: "$12.00" },
+  //   { name: "Chinese Vegetable (Chicken/Shrimp)", price: "$10.00" },
+  //   { name: "Noodles", price: "$12.00" },
+  //   { name: "Thai Soup", price: "$8.00" },
+  //   { name: "Chicken Soup", price: "$8.00" },
+  //   { name: "Vegetable Corn Soup", price: "$8.00" },
+  // ],
+  // "breakfast combo": [
+  //   {
+  //     name: "Porota/Naan/Rooti, Vaji-Daal Mix, Cup of Tea",
+  //     price: "$6.00",
+  //   },
+  //   {
+  //     name: "Porota/Rooti, Haluwa or Misty, Cup of Tea",
+  //     price: "$6.00",
+  //   },
+  //   {
+  //     name: "Bhuna Khichuri, Fried Egg, and Cup of Tea",
+  //     price: "$12.00",
+  //   },
+  // ],
+  // "lunch & dinner combo": [
+  //   {
+  //     name: "Ruhi/Koi/Pangas, Any two bhorta, Daal/Mix Vegetable",
+  //     price: "$14.00",
+  //   },
+  //   {
+  //     name: "Shorshe Elish/Elisher Jul/Elisher Dupeyaju, Any two Bhorta, Daal/Mix Vegetable",
+  //     price: "$16.00",
+  //   },
+  //   {
+  //     name: "Beef Bhuna/Kala Bhuna/Goat Rejala, Any two Bhorta, Daal/Mix Vegetable",
+  //     price: "$15.00",
+  //   },
+  //   {
+  //     name: "Chicken Roast/Chicken Khurma/Chicken Curry, Daal/Mix Vegetable",
+  //     price: "$15.00",
+  //   },
+  // ],
+};
+
 
   const categories = [
-    { id: "soup", name: "SOUP", icon: Coffee, color: "text-red-500" },
-    { id: "drinks", name: "DRINKS", icon: Coffee, color: "text-red-500" },
-    { id: "pizza", name: "PIZZA", icon: Pizza, color: "text-red-500" },
-    { id: "dinner", name: "DINNER", icon: ChefHat, color: "text-red-500" },
-    { id: "lunch", name: "LUNCH", icon: Utensils, color: "text-red-500" },
-    { id: "breakfast", name: "BREAKFAST", icon: Clock, color: "text-red-500" },
+    { id: "vegetable", name: "VEGETABLE", icon: Coffee, color: "text-red-500" },
+    { id: "dessert and drinks", name: "DESSERT AND DRINKS", icon: ChefHat, color: "text-red-500" },
+    { id: "misty", name: "MISTY", icon: ChefHat, color: "text-red-500" },
+    // { id: "bread and rice", name: "BREAD AND RICE", icon: Coffee, color: "text-red-500" },
+    // { id: "halal chinese", name: "HALAL CHAINESE", icon: Pizza, color: "text-red-500" },
+
+    // { id: "breakfast combo", name: "BREAKFAST COMBO", icon: Utensils, color: "text-red-500" },
+    // { id: "lunch & dinner combo", name: "LUNCH & DINNER COMBO", icon: Clock, color: "text-red-500" },
   ];
 
   const getDisplayedItems = () => {
@@ -231,7 +177,7 @@ const RestaurantMenu = () => {
   };
 
   const getItemsPerCategory = (categoryId) => {
-    return menuItems[categoryId]?.slice(0, 5) || [];
+    return menuItems[categoryId]?.slice(0, 8) || [];
   };
 
   return (
@@ -267,7 +213,7 @@ const RestaurantMenu = () => {
             </h3>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-8 relative">
               OUR MENU
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-red-500 rounded-full"></div>
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-red-500 rounded-full"></div>
             </h2>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto mt-1 text-lg leading-relaxed">
@@ -303,24 +249,21 @@ const RestaurantMenu = () => {
                 </div>
 
                 {/* Menu Items */}
-                <div className="p-6 space-y-1">
+                <div className="p-6">
                   {categoryItems.map((item, itemIndex) => (
                     <div
                       key={itemIndex}
                       className="group cursor-pointer hover:bg-gray-50 rounded-lg p-3 transition-all duration-300 transform hover:scale-105"
                     >
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-semibold text-gray-800 group-hover:text-red-500 transition-colors duration-300">
+                      <div className="flex justify-between items-start">
+                        <h4 className=" font-semibold text-gray-800 group-hover:text-red-500 transition-colors duration-300">
                           {item.name}
                         </h4>
                         <span className="text-red-500 font-bold text-lg ml-4 flex-shrink-0">
                           {item.price}
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {item.description}
-                      </p>
-                      <div className="w-full h-px bg-gray-200 mt-3 group-hover:bg-red-300 transition-colors duration-300"></div>
+                      <div className="w-full h-px bg-gray-200 group-hover:bg-red-300 transition-colors duration-300"></div>
                     </div>
                   ))}
                 </div>
@@ -336,10 +279,10 @@ const RestaurantMenu = () => {
           }`}
           style={{ transitionDelay: "600ms" }}
         >
-          <button className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:from-red-600 hover:to-orange-600">
+          <button className="group inline-flex cursor-pointor items-center px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:from-red-600 hover:to-orange-600">
             <span className="mr-3 text-lg">FULL MENU</span>
             <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center group-hover:bg-opacity-30 transition-all duration-300">
-              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+              <FaRegArrowAltCircleDown className="w-6 h-6  text-red-700" />
             </div>
           </button>
         </div>

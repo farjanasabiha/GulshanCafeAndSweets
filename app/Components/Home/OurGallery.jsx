@@ -1,184 +1,137 @@
-'use client'
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-const OurGallery = () => {
-  const [hoveredItem, setHoveredItem] = useState(null);
-    const [floatingVeggies, setFloatingVeggies] = useState([]);
-  
-    const vegetables = [
-      { image: "/14.png" },
-      { image: "/5 (1).png" },
-      { image: "/40.png" },
-    ];
-  
-    useEffect(() => {
-      // Create only 3 fixed veggies
-      const positions = [
-        { x: 8, y: 70 }, // left side
-        { x: 2, y: 20 }, // left side
-        { x: 90, y: 40 }, // right side
-      ];
-  
-      const initialVeggies = vegetables.map((veg, i) => ({
-        id: i,
-        veggie: veg.image,
-        x: positions[i].x,
-        y: positions[i].y,
-        rotation: Math.random() * 360,
-        scale: 0.8 + Math.random() * 0.4,
-        animationDuration: 3 + Math.random() * 4,
-      }));
-  
-      setFloatingVeggies(initialVeggies);
-    }, []);
+import React from "react";
 
-  const galleryItems = [
+const OurGallery = () => {
+  const promotions = [
     {
       id: 1,
-      image: "/chicken.jpg",
-      description: "Experience the art of tea cultivation and tasting",
+      title: "Chicken Chow Mein",
+      description: "Stir-fried noodles with tender chicken",
+      buttonColor: "bg-red-600 hover:bg-red-600",
+      image: "/Chicken-Chow-Mein-1.jpg",
+      size: "col-span-2",
+      price: "$6.00",
     },
     {
       id: 2,
-      image: "/bg-side-3.jpg",
-      description: "Modern architectural design meets literary sanctuary",
+      title: "Ilish Fish",
+      description: "Fresh & Crunchy Veggie Delight",
+      buttonColor: "bg-red-600 hover:bg-red-600",
+      image: "/fish.jpg",
+      size: "col-span-1",
+      price: "$6.00",
     },
     {
       id: 3,
-      image: "/coffee.jpg",
-      description: "Sustainable farming practices in scenic landscapes",
+      title: "Sesame chicken",
+      description: "Crispy Sesame Chicken with a Sweet & Savory Glaze",
+            buttonColor: "bg-red-600 hover:bg-red-600",
+
+      image: "/bg-side-3.jpg",
+      size: "col-span-1",
+      price: "$6.00",
     },
     {
       id: 4,
-      image: "/vagitable.jpg",
-      description: "Learn traditional and modern farming techniques",
+      title: "Special Misty",
+      description:
+        "Traditional Bengali sweet, rich in flavor and made with love.",
+            buttonColor: "bg-red-600 hover:bg-red-600",
+
+      image: "/misty.webp",
+      size: "col-span-1",
+      price: "$6.00",
     },
     {
       id: 5,
-      image: "/biriyani.jpg",
-      description: "Cultural events in stunning architectural spaces",
+      title: "Vegetable Fried Rice",
+      description:
+        "Flavorful fried rice tossed with fresh vegetables and aromatic spices.",
+            buttonColor: "bg-red-600 hover:bg-red-600",
+
+      image: "/Beef-Fried-Rice.jpg",
+      size: "col-span-1",
+      price: "$6.00",
     },
     {
       id: 6,
-      image: "/coffee.jpg",
-      description: "Detailed craftsmanship in miniature form",
-    },
-    {
-      id: 7,
-      image: "/vagitable.jpg",
-      description: "Detailed craftsmanship in miniature form",
-    },
-    {
-      id: 8,
-      image: "/chicken.jpg",
-      description: "Modern architectural design meets literary sanctuary",
+      title: "Kacha Gullah",
+      description: "Soft, Milky Delight of Bengal",
+            buttonColor: "bg-red-600 hover:bg-red-600",
+
+      image: "/hq720.jpg",
+      size: "col-span-2",
+      price: "$6.00",
     },
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50  overflow-hidden relative">
-      {/* Floating Vegetables */}
-      {floatingVeggies.map((veggie) => (
-        <div
-          key={veggie.id}
-          className="absolute pointer-events-none opacity-80"
-          style={{
-            left: `${veggie.x}%`,
-            top: `${veggie.y}%`,
-            transform: `rotate(${veggie.rotation}deg) scale(${veggie.scale})`,
-            animation: `float ${veggie.animationDuration}s ease-in-out infinite alternate`,
-          }}
-        >
-          <Image src={veggie.veggie} alt="vegetable" height={120} width={150} />
-        </div>
-      ))}
-      <div className="max-w-7xl mx-auto">
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[250px]">
-          {galleryItems.map((item, index) => (
+    <div className="bg-gray-50 p-4 md:p-8 lg:py-24">
+      <div className="max-w-6xl mx-auto">
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {promotions.map((promo, index) => (
             <div
-              key={item.id}
-              className={`relative group cursor-pointer overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-2xl 
-        ${index === 0 ? "sm:col-span-2 lg:col-span-2 lg:row-span-2" : ""}
-        ${index === 1 ? "lg:col-span-2" : ""}
-      `}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
+              key={promo.id}
+              className={`relative ${promo.size} h-64 overflow-hidden shadow-lg transform transition-all duration-300 hover:overflow-hidden hover:scale-105 hover:shadow-2xl cursor-pointer group`}
             >
-              {/* Image */}
-              <div className="w-full h-full">
-                <img
-                  src={item.image}
-                  alt={item.title || "Gallery Image"}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
+              {/* Background Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 group-hover:overflow-hidden overflow-hidden"
+                style={{ backgroundImage: `url(${promo.image})` }}
+              ></div>
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/10 bg-opacity-0 group-hover:bg-black/50 transition-all duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                  <h3 className="text-white text-lg sm:text-xl font-medium tracking-wide drop-shadow-lg">
-                    {item.title || ""}
-                  </h3>
-                </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
 
-                {/* Hover Content */}
-                <div
-                  className={`absolute inset-0 flex items-center justify-center p-6 transition-all duration-300 ${
-                    hoveredItem === item.id
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  }`}
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-6 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 z-10 text-center">
+                <h2 className="text-2xl md:text-3xl text-white font-extrabold mb-2">
+                  {promo.title}
+                </h2>
+                <p className="text-white text-sm font-medium mb-4">
+                  {promo.description}
+                </p>
+                <button
+                  className={`text-xs font-bold py-2 px-4 rounded ${promo.buttonColor} transition-all duration-300 transform hover:scale-105`}
                 >
-                  <div className="text-center text-white">
-                    <div className="w-16 h-0.5 bg-white mx-auto mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200"></div>
-                    <p className="text-sm sm:text-base font-light leading-relaxed mb-6 max-w-xs">
-                      {item.description}
-                    </p>
-                    <button className="px-6 py-2 border border-white text-white text-sm font-medium uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                      Explore
-                    </button>
-                  </div>
-                </div>
+                  ORDER NOW
+                </button>
               </div>
-
-              {/* Gradient Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"></div>
             </div>
           ))}
         </div>
-
-        {/* Optional: View All Button */}
-        <div className="text-center mt-12">
-          <button className="px-8 py-3 border-2 border-gray-900 text-gray-900 font-medium uppercase tracking-wider hover:bg-gray-900 hover:text-white transition-all duration-300 transform hover:scale-105">
-            View All Projects
-          </button>
-        </div>
       </div>
-      <style jsx>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          100% {
-            transform: translateY(-20px) rotate(10deg);
-          }
-        }
 
-        @keyframes spin-slow {
+      {/* Custom Animations */}
+      <style jsx>{`
+        @keyframes fade-in {
           from {
-            transform: rotate(0deg);
+            opacity: 0;
+            transform: translateY(-20px);
           }
           to {
-            transform: rotate(360deg);
+            opacity: 1;
+            transform: translateY(0);
           }
         }
-
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out 0.8s both;
         }
       `}</style>
-    </section>
+    </div>
   );
 };
 

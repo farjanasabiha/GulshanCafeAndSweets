@@ -32,10 +32,9 @@ const Testimonial = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Christ Deo",
-      position: "CEO A4Tech Ltd.",
+      name: "Delwar Hossain",
       rating: 5,
-      text: "Food Khan is a great Restaurant from the University of Texas at Austin has been researching the benefits of frequent testing and the feedback.",
+      text: "Gulshan Cafe and Sweets never disappoints! The sweets are always fresh, and the cozy atmosphere makes it perfect for family gatherings.",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face",
       productImage:
@@ -43,10 +42,9 @@ const Testimonial = () => {
     },
     {
       id: 2,
-      name: "Robind Deo",
-      position: "CEO A4Tech Ltd.",
+      name: "Fojlay Rabbi",
       rating: 5,
-      text: "Food Khan is a great Restaurant from the University of Texas at Austin has been researching the benefits of frequent testing and the feedback.",
+      text: "Amazing food and exceptional service! From the savory dishes to the delightful desserts, every visit to Gulshan Cafe and Sweets is a treat.",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face",
       productImage:
@@ -77,15 +75,15 @@ const Testimonial = () => {
         {/* Title */}
         <div className="text-center mb-12 md:mb-16 animate-fade-up">
           <h3 className="text-red-500 font-script text-xl mb-4 transform hover:scale-105 transition-transform duration-300">
-            Food Item
+            Happy Customers
           </h3>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-8 relative">
-            Feedback
+            Customers Feedback
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-red-500 rounded-full"></div>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-1 text-lg leading-relaxed">
-            Lorem ipsum is simply dummy text of the printing and typesetting
-            industry.
+            Our happy customers share their experiences and feedback, reflecting
+            the quality and trust in our services.
           </p>
         </div>
 

@@ -8,10 +8,12 @@ import LatestNews from "./Components/Home/LatestNews";
 import Footer from "./Components/Common/Footer";
 import Navbar from "./Components/Common/Navbar";
 import FoodTab from "./Components/Home/FoodTab";
+import Topbar from "./Components/Common/Topbar";
 export default function Home() {
   return (
     <ReactLenis root>
       <main className="">
+        <Topbar/>
         <Navbar />
         <HomeHeader />
         <FoodTab />

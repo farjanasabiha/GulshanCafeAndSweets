@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-
 const FoodTab = () => {
   const [activeTab, setActiveTab] = useState("Pizza");
 
@@ -35,57 +34,49 @@ const FoodTab = () => {
   }, []);
 
   const menuTabs = [
-    { name: "Pizza", icon: "🍕", color: "bg-[#d14747]" },
-    { name: "Burger", icon: "🍔", color: "bg-[#d14747]" },
-    { name: "Chicken", icon: "🍗", color: "bg-[#d14747]" },
-    { name: "Drinks", icon: "🥤", color: "bg-[#d14747]" },
-    { name: "Vagitables", icon: "🍝", color: "bg-[#d14747]" },
-    { name: "Menu", icon: "🍽️", color: "bg-[#d14747]" },
+    { name: "Misty", image: "/misty.png", color: "bg-[#d14747]" },
+    { name: "Drinks", image: "/drinks.png", color: "bg-[#d14747]" },
+    { name: "Vegetable", image: "/vegetable.png", color: "bg-[#d14747]" },
+    { name: "Rice Items", image: "/rice.png", color: "bg-[#d14747]" },
+    { name: "Chinese", image: "/foods.png", color: "bg-[#d14747]" },
+    { name: "Dessert", image: "/dessert.png", color: "bg-[#d14747]" },
   ];
 
   const menuItems = [
     {
-      name: "Margherita",
-      description: "Shrimp, Squid, Pineapple",
-      price: "$15.00",
-      image: "🍕",
+      name: "Rosogullah",
+      price: "$8.00",
+      image: "/swtte.jpg",
       bgColor: "bg-red-100",
     },
     {
-      name: "Tomato",
-      description: "Shrimp, Squid, Pineapple",
-      price: "$15.00",
-      image: "🍅",
+      name: "Balu Shahi",
+      price: "$8.00",
+      image: "/Balu-Shahi.jpg",
       bgColor: "bg-red-200",
     },
     {
-      name: "Marinara",
-      description: "Shrimp, Squid, Pineapple",
-      price: "$15.00",
-      oldPrice: "$18.00",
-      image: "🍝",
+      name: "Kalo Jam",
+      price: "$8.00",
+      image: "/kalo jam.jpg",
       bgColor: "bg-orange-100",
     },
     {
-      name: "Frutti Di Mare",
-      description: "Shrimp, Squid, Pineapple",
-      price: "$15.00",
-      image: "🦐",
+      name: "Golap Jam",
+      price: "$8.00",
+      image: "/Golap Jam.jpg",
       bgColor: "bg-blue-100",
     },
     {
-      name: "Americana",
-      description: "Shrimp, Squid, Pineapple",
-      price: "$15.00",
-      image: "🍕",
+      name: "Panthua",
+      price: "$8.00",
+      image: "/Panthua.jpg",
       bgColor: "bg-green-100",
     },
     {
-      name: "Pizza Al Pesto",
-      description: "Shrimp, Squid, Pineapple",
-      price: "$15.00",
-      oldPrice: "$18.00",
-      image: "🌿",
+      name: "Kacha Gullah",
+      price: "$9.00",
+      image: "/Kacha Gullah.jpg",
       bgColor: "bg-green-200",
     },
   ];
@@ -125,7 +116,7 @@ const FoodTab = () => {
             key={index}
             onClick={() => setActiveTab(tab.name)}
             className={`
-              flex flex-col items-center p-4 rounded-md transition-all duration-300 transform hover:scale-110 hover:shadow-xl
+              flex flex-col items-center p-4 rounded-md transition-all duration-300 cursor-pointer hover:text-white transform hover:bg-red-700 hover:scale-110 hover:shadow-xl
               ${
                 activeTab === tab.name
                   ? tab.color + " text-white shadow-lg scale-105"
@@ -140,7 +131,7 @@ const FoodTab = () => {
               ${activeTab === tab.name ? "animate-pulse" : ""}
             `}
             >
-              {tab.icon}
+              <Image src={tab.image} height={45} width={45} alt="Misty" />
             </div>
             <span className="text-sm font-semibold text-center leading-tight">
               {tab.name}
@@ -157,14 +148,22 @@ const FoodTab = () => {
         {menuItems.map((item, index) => (
           <div
             key={index}
-            className="bg-white flex items-center justify-between gap-10 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden"
+            className="bg-white flex items-center justify-center gap-10 rounded-3xl p-3 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden"
           >
             {/* Item Image */}
-            <div
-              className={`w-20 h-20 ${item.bgColor} rounded-full flex items-center justify-center mb-4 mx-auto text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}
+<div>
+              <div
+              className={`h-[100px] w-[100px] rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}
             >
-              {item.image}
+              <Image
+                src={item.image}
+                alt="vegetable"
+                height={100}
+                width={100}
+                className="h-full w-full object-cover"
+              />
             </div>
+</div>
 
             {/* Item Details */}
             <div className="text-left">
@@ -173,7 +172,7 @@ const FoodTab = () => {
               </h3>
               <p className="text-gray-600 text-sm mb-2">{item.description}</p>
               <div className="flex items-center justify-start gap-2">
-                <span className="text-xl font-bold text-gray-800">
+                <span className="text-xl font-bold text-red-600">
                   Price: {item.price}
                 </span>
                 {item.oldPrice && (
