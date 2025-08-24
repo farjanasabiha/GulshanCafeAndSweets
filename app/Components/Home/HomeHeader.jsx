@@ -247,7 +247,7 @@ export default function HomeHeader() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-[20s] ease-out hover:scale-110"
         style={{
-          backgroundImage: `url('/bg-img.jpg')`,
+          backgroundImage: `url('tea.jpg')`,
         }}
       />
 
@@ -259,7 +259,7 @@ export default function HomeHeader() {
 
       {/* Content Container */}
       <div className="relative z-10 h-full px-6 ">
-        <div className="max-w-7xl mx-auto text-left py-20">
+        <div className="max-w-7xl mx-auto text-left py-28">
           {/* Badge/Tag */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fadeInUp">
             <span className="text-sm font-medium text-white/90 tracking-wide">
@@ -278,7 +278,8 @@ export default function HomeHeader() {
           {/* Subtitle */}
           <p className="text-xl  text-white/70 mb-8 max-w-2xl leading-relaxed font-light animate-fadeInUp animation-delay-400">
             Wecome Gulshan Cafe and Sweets. Serving authentic Bangladeshi
-            home-style halal food in Albany, NY.
+            home-style halal food in Albany, NY. From traditional dishes to
+            handcrafted sweets, each meal reflects rich heritage and care.
           </p>
 
           {/* CTA Buttons */}
@@ -305,28 +306,6 @@ export default function HomeHeader() {
                 </svg>
               </span>
             </button>
-          </div>
-
-          {/* Stats or Features */}
-          <div className="flex flex-wrap gap-8 mt-12 animate-fadeInUp animation-delay-800">
-            <div className="text-center sm:text-left">
-              <div className="text-3xl font-bold text-white mb-1">10K+</div>
-              <div className="text-white/70 text-sm uppercase tracking-wider">
-                Satisfied Food Lovers
-              </div>
-            </div>
-            <div className="text-center sm:text-left">
-              <div className="text-3xl font-bold text-white mb-1">99.9%</div>
-              <div className="text-white/70 text-sm uppercase tracking-wider">
-                Freshness Guaranteed
-              </div>
-            </div>
-            <div className="text-center sm:text-left">
-              <div className="text-3xl font-bold text-white mb-1">24/7</div>
-              <div className="text-white/70 text-sm uppercase tracking-wider">
-                Delicious Service
-              </div>
-            </div>
           </div>
         </div>
       </div>
