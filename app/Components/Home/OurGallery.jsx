@@ -54,11 +54,10 @@ const OurGallery = () => {
     },
     {
       id: 6,
-      title: "Kacha Gullah",
-      description: "Soft, Milky Delight of Bengal",
-            buttonColor: "bg-red-600 hover:bg-red-600",
-
-      image: "/hq720.jpg",
+      title: "Hot Coffee",
+      description: "Special hot Coffee",
+      buttonColor: "bg-red-600 hover:bg-red-600",
+      image: "/coffee.png",
       size: "col-span-2",
       price: "$6.00",
     },
