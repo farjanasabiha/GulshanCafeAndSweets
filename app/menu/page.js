@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../Components/Common/Footer";
-import Navbar from "../Components/Common/Navbar";
+// import Navbar from "../Components/Common/Navbar";
 import RestaurantOrderingSystem from "../Components/RestaurantOrderingSystem/RestaurantOrderingSystem";
 // import MenuHeader from "../Components/Menu/MenuHeader";
 // import MenuOne from "../Components/Menu/MenuOne";
@@ -9,7 +9,7 @@ import RestaurantOrderingSystem from "../Components/RestaurantOrderingSystem/Res
 const page = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <RestaurantOrderingSystem/>
       {/* <MenuHeader />
       <MenuOne />

@@ -6,8 +6,8 @@ import OurGallery from "./Components/Home/OurGallery";
 import Testimonial from "./Components/Home/Testimonial";
 import LatestNews from "./Components/Home/LatestNews";
 import Footer from "./Components/Common/Footer";
-import Navbar from "./Components/Common/Navbar";
 import FoodTab from "./Components/Home/FoodTab";
+import Navbar from "./Components/Common/Navbar";
 import Topbar from "./Components/Common/Topbar";
 export default function Home() {
   return (
